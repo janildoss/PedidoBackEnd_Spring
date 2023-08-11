@@ -19,21 +19,25 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService service;
 	
+	//GET ONE
 	//@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	@GetMapping("/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Categoria obj = service.buscar(id);
-		return ResponseEntity.ok().body(obj);
-		
-/*		Categoria cat1 = new Categoria(1,"Informatica");
-		Categoria cat2 = new Categoria(2,"Escritório");
-		
-		List<Categoria> lista = new ArrayList<>();
-		lista.add(cat1);
-		lista.add(cat2);
-		
-		//return obj;*/
-		
+		return ResponseEntity.ok().body(obj);		
 	}
+	//GET ALL
+/*	@GetMapping()
+	public ResponseEntity<?> findAll(@PathVariable Integer id) {
+		Categoria obj = service.buscarTodos(id);
+		return ResponseEntity.ok().body(obj);		
+	}*/
+	
+	//Post
+	//Get
+		
+	//Put
+	//Delete
+		
 	
 }
