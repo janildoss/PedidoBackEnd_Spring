@@ -1,8 +1,6 @@
 package com.api.PedidoBackEnd_Spring.resources;
 
-//import java.util.ArrayList;
-//import java.util.List;
-
+//CONTROLLER
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +18,24 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	//GET ONE
-	//@RequestMapping(value="/{id}",method=RequestMethod.GET)
+	//@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	@GetMapping("/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Categoria obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);		
 	}
+	
 	//GET ALL
-/*	@GetMapping()
-	public ResponseEntity<?> findAll(@PathVariable Integer id) {
-		Categoria obj = service.buscarTodos(id);
+	//@GetMapping("/")
+	/*public ResponseEntity<?> findAll(@PathVariable Integer id) {
+		Categoria obj = (Categoria) service.buscarTodos();
 		return ResponseEntity.ok().body(obj);		
 	}*/
 	
-	//Post
-	//Get
-		
-	//Put
-	//Delete
+	//POST
+	//GET		
+	//PUT
+	//DELETE
 		
 	
 }
