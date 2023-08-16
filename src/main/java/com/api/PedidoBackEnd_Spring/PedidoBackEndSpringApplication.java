@@ -9,8 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
+import com.api.PedidoBackEnd_Spring.domain.Cidade;
+import com.api.PedidoBackEnd_Spring.domain.Estado;
 import com.api.PedidoBackEnd_Spring.domain.Produto;
 import com.api.PedidoBackEnd_Spring.repositories.CategoriaRepository;
+import com.api.PedidoBackEnd_Spring.repositories.CidadeRepository;
+import com.api.PedidoBackEnd_Spring.repositories.EstadoRepository;
 import com.api.PedidoBackEnd_Spring.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -20,6 +24,13 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(PedidoBackEndSpringApplication.class, args);	
@@ -40,10 +51,24 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 		
 		p1.getCategorias().addAll(Arrays.asList(cat1));
 		p2.getCategorias().addAll(Arrays.asList(cat1,cat2));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
+		p3.getCategorias().addAll(Arrays.asList(cat1));		
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1,cat2));
 		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
+		
+		Estado est1 = new Estado(null,"Minas Gerais");
+		Estado est2 = new Estado(null,"São paulo");
+		
+		Cidade c1 = new Cidade(null,"Uberlandia",est1);
+		Cidade c2 = new Cidade(null,"São Paulo",est2);
+		Cidade c3 = new Cidade(null,"Campinas",est2);
+		
+		est1.getCidades().addAll(Arrays.asList(c1));
+		est2.getCidades().addAll(Arrays.asList(c2, c3));
+		
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
+		
 	}
 	
 	
