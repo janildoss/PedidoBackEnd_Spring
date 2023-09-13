@@ -7,11 +7,5 @@ import com.api.PedidoBackEnd_Spring.domain.Categoria;
 
 //@Repository
 public interface CategoriaRepository extends JpaRepository <Categoria,Integer> {
-
-	//Post
-	//Get
-	//Get one
-	//Put
-	//Delete
 	
 }
