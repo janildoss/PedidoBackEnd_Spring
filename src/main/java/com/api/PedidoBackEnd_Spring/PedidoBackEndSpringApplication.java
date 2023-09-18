@@ -99,7 +99,7 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
 		Cliente cli1 = new Cliente(null,"Maria Silva","maria@gmail.com","36378912377",TipoCliente.PESSOAFISICA);
-		cli1.getTelefones().addAll(Arrays.asList("2735698","988745562"));
+		cli1.getTelefones().addAll(Arrays.asList("27356698","988745562"));
 		
 		Endereco e1 = new Endereco(null,"Rua Flores","300","Apto 303","JArdim Pampulha","38220834",cli1,c1);
 		Endereco e2 = new Endereco(null,"Av.Matos","310","sala 453","Centro","3800245734",cli1,c2);
@@ -117,6 +117,7 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 		
 		Pagamento pagto1 = new PagamentoComCartao(null,EstadoPagamento.QUITADO,ped1,6);
 		ped1.setPagamento(pagto1);
+		
 		Pagamento pagto2 = new PagamentoComBoleto(null,EstadoPagamento.PENDENTE, ped2, sdf.parse("20/10/2012 00:00"), null); 
 		ped2.setPagamento(pagto2);	
 		
@@ -135,6 +136,7 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 		p1.getItens().addAll(Arrays.asList(ip1));
 		p2.getItens().addAll(Arrays.asList(ip3));
 		p3.getItens().addAll(Arrays.asList(ip2));
+		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
 	}	
 
