@@ -101,7 +101,7 @@ public class PedidoBackEndSpringApplication implements CommandLineRunner {
 		Cliente cli1 = new Cliente(null,"Maria Silva","maria@gmail.com","36378912377",TipoCliente.PESSOAFISICA);
 		cli1.getTelefones().addAll(Arrays.asList("27356698","988745562"));
 		
-		Endereco e1 = new Endereco(null,"Rua Flores","300","Apto 303","JArdim Pampulha","38220834",cli1,c1);
+		Endereco e1 = new Endereco(null,"Rua Flores","300","Apto 303","Jardim Pampulha","38220834",cli1,c1);
 		Endereco e2 = new Endereco(null,"Av.Matos","310","sala 453","Centro","3800245734",cli1,c2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));

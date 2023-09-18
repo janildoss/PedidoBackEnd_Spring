@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.api.PedidoBackEnd_Spring.enums.EstadoPagamento;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -22,7 +23,7 @@ public abstract class Pagamento implements Serializable  {
 	private Integer id;
 	private Integer estado;
 	//private EstadoPagamento estado;
-	@JsonBackReference
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId  //Garantir que o id seja igual ao do pedido
