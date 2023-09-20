@@ -1,6 +1,8 @@
 package com.api.PedidoBackEnd_Spring.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 //CONTROLLER
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.api.PedidoBackEnd_Spring.DTO.CategoriaDTO;
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
 import com.api.PedidoBackEnd_Spring.services.CategoriaService;
 
@@ -63,11 +66,15 @@ public class CategoriaResource {
 	
 	
 	//GET ALL
-	//@GetMapping("/")
-	/*public ResponseEntity<?> findAll(@PathVariable Integer id) {
-		Categoria obj = (Categoria) service.buscarTodos();
-		return ResponseEntity.ok().body(obj);		
-	}*/
+	@GetMapping("")
+	public ResponseEntity<List<CategoriaDTO>> findAll() {
+		List<Categoria> list = service.findAll();
+		List<CategoriaDTO> listDTO =list.stream().
+				map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(listDTO);	
+		
+	}
 	
 	//POST
 	//GET		
