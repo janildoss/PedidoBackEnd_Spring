@@ -23,6 +23,8 @@ import com.api.PedidoBackEnd_Spring.DTO.CategoriaDTO;
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
 import com.api.PedidoBackEnd_Spring.services.CategoriaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
@@ -44,7 +46,8 @@ public class CategoriaResource {
     }*/
 	
 	@PostMapping
-	public ResponseEntity<Categoria> insert(@RequestBody Categoria obj){
+	public ResponseEntity<Categoria> insert(@Valid @RequestBody CategoriaDTO objDto){
+		Categoria obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -54,7 +57,8 @@ public class CategoriaResource {
 	
 	@PutMapping(value="/{id}")
 	//@RequestMapping(value="/{id}",method=RequestMethod.PUT)
-	public ResponseEntity<Categoria> update(@RequestBody Categoria obj, @PathVariable Integer id){
+	public ResponseEntity<Categoria> update(@Valid @RequestBody CategoriaDTO objDto, @PathVariable Integer id){
+		Categoria obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();		

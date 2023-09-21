@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.api.PedidoBackEnd_Spring.DTO.CategoriaDTO;
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
 import com.api.PedidoBackEnd_Spring.repositories.CategoriaRepository;
 import com.api.PedidoBackEnd_Spring.services.exception.DataIntegrityException;
@@ -58,6 +59,11 @@ public class CategoriaService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy); 
 		
 		return repo.findAll(pageRequest);
+	}
+	
+	//Metodo auxiliar
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(),objDto.getNome());
 	}
 	
 	
