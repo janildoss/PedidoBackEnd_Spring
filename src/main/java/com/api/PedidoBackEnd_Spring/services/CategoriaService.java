@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.api.PedidoBackEnd_Spring.DTO.CategoriaDTO;
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
+import com.api.PedidoBackEnd_Spring.domain.Cliente;
 import com.api.PedidoBackEnd_Spring.repositories.CategoriaRepository;
 import com.api.PedidoBackEnd_Spring.services.exception.DataIntegrityException;
 import com.api.PedidoBackEnd_Spring.services.exception.ObjectNotFoundException;
@@ -34,10 +35,15 @@ public class CategoriaService {
 	    //return new ResponseEntity<>(repo.save(obj),HttpStatus.CREATED);
 	}
 	
-	public Categoria update(Categoria obj) {
-		find(obj.getId());
+	//public Categoria update(Categoria obj) {
+	//	find(obj.getId());
 		
-		return repo.save(obj);
+	//	return repo.save(obj);
+	//}
+	public Categoria update(Categoria obj) {
+		Categoria newObj = find(obj.getId());
+		updateData(newObj,obj);
+		return repo.save(newObj);
 	}
 	
 	public void delete(Integer id) {
@@ -65,7 +71,10 @@ public class CategoriaService {
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(),objDto.getNome());
 	}
-	
+	private void updateData(Categoria newObj,Categoria obj) {
+		newObj.setNome(obj.getNome());
+		//newObj.setEmail(obj.getEmail());
+	}
 	
 		
 }
