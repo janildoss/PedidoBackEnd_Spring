@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.api.PedidoBackEnd_Spring.DTO.CategoriaDTO;
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
-import com.api.PedidoBackEnd_Spring.domain.Cliente;
 import com.api.PedidoBackEnd_Spring.repositories.CategoriaRepository;
 import com.api.PedidoBackEnd_Spring.services.exception.DataIntegrityException;
 import com.api.PedidoBackEnd_Spring.services.exception.ObjectNotFoundException;
@@ -31,8 +30,7 @@ public class CategoriaService {
 	
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
-		return repo.save(obj); 
-	    //return new ResponseEntity<>(repo.save(obj),HttpStatus.CREATED);
+		return repo.save(obj); 	    
 	}
 	
 	//public Categoria update(Categoria obj) {
