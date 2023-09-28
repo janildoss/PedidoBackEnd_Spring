@@ -10,6 +10,7 @@ import java.util.Set;
 import com.api.PedidoBackEnd_Spring.enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -31,7 +32,7 @@ public class Cliente implements Serializable  {
 	
 	
 	//@JsonManagedReference
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	//garante a nao repeticao um conjunto de String
