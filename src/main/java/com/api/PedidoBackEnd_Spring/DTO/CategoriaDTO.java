@@ -3,7 +3,6 @@ package com.api.PedidoBackEnd_Spring.DTO;
 import java.io.Serializable;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import com.api.PedidoBackEnd_Spring.domain.Categoria;
 

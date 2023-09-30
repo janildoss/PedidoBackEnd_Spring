@@ -2,12 +2,26 @@ package com.api.PedidoBackEnd_Spring.DTO;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
+import com.api.PedidoBackEnd_Spring.services.validation.ClienteInsert;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
+@ClienteInsert
 public class ClienteNewDTO  implements Serializable{	
 	private static final long serialVersionUID = 1L;
 	
 	//Dados do cliente
+	@NotBlank(message="Preenchimento obrigatorio")
+	@Length(min=5,max=80,message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
+	@NotEmpty(message="Preenchimento obrigatorio")
+	@Email(message="Email invalido")
 	private String email;
+	
 	private String cpfOuCnpj;
 	private Integer tipo;
 	//Dados do endereco
@@ -15,8 +29,10 @@ public class ClienteNewDTO  implements Serializable{
 	private String numero;
 	private String complemento;
 	private String bairro;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String cep;
 	//Dados do telefone
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
